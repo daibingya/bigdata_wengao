@@ -1,0 +1,24 @@
+html,body{background-color:#0e123e;color:#fff;}
+header{width:100%;height:70px;position: relative;padding:0 100px;box-sizing: border-box;background:url(../image/rect.png);}
+header ul{width:100%;height:100%;font-size:0;}
+header ul li{
+	display: inline-block;font-size:19px;vertical-align: top;font-weight: bold;color:#a8bdf4;margin:0 15px;line-height: 70px;cursor:pointer;
+}
+header ul li:nth-child(n+3){float: right}
+header ul li.active{color:#52ffff;}
+header ul li:nth-child(3n-2){margin-right:100px}
+header div.back{max-width:690px;text-align: center;position: absolute;top:0;left:0;right:0;margin:auto;}
+.time{
+	width:100%;
+	height:50px;
+	line-height: 50px;
+	margin-top:25px;
+	text-align: center;
+	box-sizing:border-box;
+}
+.layui-form-item .layui-inline{margin:0;}
+.layui-input, .layui-textarea{
+	background-color:rgba(0,0,0,0);
+	color:#fff;
+	border:1px solid #6d6d6d;
+}

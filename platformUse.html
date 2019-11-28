@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>平台使用大数据</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/scrolledit.css">
+	<link rel="stylesheet" href="./css/layui.css">
+	<link rel="stylesheet" href="./css/publiccss.css">
+	<script src="./js/this.js"></script>
+</head>
+<style>
+.botCont.one{
+	height:390px;
+}
+.botCont{
+	width:1870px;
+	height:470px;
+	margin:20px auto;
+	font-size: 0;
+}
+.left,.right,.center{
+	background-image:url(./image/border.png);
+	background-size:100% 100%;
+	background-color:rgba(22,25,68,.8);
+	display: inline-block;
+	vertical-align: top;
+	font-size:16px;
+}
+.botCont .center{
+	margin:0 15px;
+	width:597px;
+	height:100%;
+}
+.botCont .right{
+	width:601px;
+	height:100%;
+}
+.botCont .left{
+	width:640px;
+	height:100%;
+}
+
+.titeBox{
+	width:100%;
+	height:50px;
+	padding:15px 20px;
+	box-sizing:border-box;
+	color:#507cf1;
+}
+.titeBox img{
+	vertical-align: bottom;
+}
+.titeBox .title{
+	width:200px;
+	font-size:18px;
+	display: inline-block;
+	font-weight: bold;
+}
+.titeBox .select{
+	float: right;
+}
+.titeBox .select span{
+	width:70px;
+	height:30px;
+	font-size:12px;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+	border:1px solid #2a3b72;
+}
+.titeBox .select ol{
+	display: inline-block;
+	vertical-align: top;
+}
+.titeBox .select span:first-child{
+	border-right:0;
+}
+.titeBox .select span.actives{
+	color:#fff;
+	background-color:#669ffd;
+}
+.echartsPublic{
+	width:98%;
+	margin:auto;
+	height:calc(100% - 60px);
+	margin-top:5px;
+}
+.echartsPublic ul{font-size:0;}
+.echartsPublic ul li{
+	width: 188px;
+	height:128px;
+	padding-top:15px;
+	box-sizing:border-box;
+	text-align: center;
+	border:1px solid #26285e;
+	display: inline-block;vertical-align: top;
+	font-size:14px;
+	color:#fff;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+.echartsPublic ul li p:first-child{
+	margin-bottom:15px;
+	color:#52ffff;
+	font-size:50px;
+	font-family: fantasy;
+}
+</style>
+<body>
+	<header>
+		<ul>
+			<li><a href="./index.html">文稿大数据</a></li>
+			<li><a href="./centerKitchen.html">中央厨房大数据</a></li>
+			<li class="active"><a href="./platformUse.html">平台使用大数据</a></li>
+			<li><a href="./companyKitchen.html">单位厨房大数据</a></li>
+		</ul>
+		<div class="back"><img src="./image/header.png" alt=""></div>
+	</header>
+	
+	<!-- 时间选择 -->
+	<div class="time">
+		<div class="layui-form">
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <input type="text" class="layui-input test-item" placeholder="请选择起始时间">
+		    </div>
+		    <span style="color:#6d6d6d">--</span>
+		    <div class="layui-inline">
+		      <input type="text" class="layui-input test-item" placeholder="请选择结束时间">
+		    </div>
+		    <button type="button" class="layui-btn layui-btn-normal">查询</button>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="botCont one">
+		<div class="left">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>用户数量统计</span>
+				</div>
+				<div class="select">
+					<ol>系统用户总数：</ol>
+					<ol>261人</ol>
+				</div>
+			</div>
+			<div class="echartsPublic">
+				<ul>
+					<li>
+						<p>1</p><p>中央厨房管理员</p>
+					</li>
+					<li>
+						<p>10</p><p>文稿录入人员</p>
+					</li>
+					<li>
+						<p>15</p><p>单位领导班子</p></li>
+					<li>
+						<p>21</p><p>一般工作人员</p></li>
+					<li>
+						<p>1</p><p>单位其他人员</p>
+					</li>
+					<li>
+						<p>1</p><p>中央厨房管理员</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="center">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>用户登录情况统计</span>
+				</div>
+				<div class="select">
+					<ol>用户登录次数总数：</ol>
+					<ol>261次</ol>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts1"></div>
+		</div>
+		<div class="right">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>用户登录排名</span>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts2">
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="botCont">
+		<div class="left">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>用户访问量统计</span>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts3">
+				
+			</div>
+		</div>
+		<div class="center">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>栏目访问量排名</span>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts4"></div>
+		</div>
+		<div class="right">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>用户使用情况分析</span>
+				</div>
+				<div class="select">
+					<span>按月查看</span><span class="actives">每日查看</span>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts5">
+				
+			</div>
+		</div>
+	</div>
+</body>
+<script src="./js/echarts.js"></script>
+<script src="./layDate/laydate/laydate.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/layuiUse.js"></script>
+<script>
+// 用户登录情况统计
+var myChart1=echarts.init(document.getElementById("echarts1"));
+
+var option1 = {
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend:{
+    	show:true,
+    	orient:"vertical",
+    	icon:'circle',
+    	left:"60%",
+    	top:'center',
+    	itemGap:15,
+    	formatter:function(value){
+    		return '{a|'+value+'  }'+'{a|32次  }'+"{b|17%}"
+    	},
+    	textStyle:{
+	    	rich:{
+	    		a:{color:"#fff"},
+	    		b:{color:"#45cef6"}
+	    	}
+    	}
+    },
+    series : [
+        {
+            name:'登录情况',
+            type:'pie',
+            radius : [20, 110],
+            center : ['30%', '50%'],
+            roseType : 'radius',
+            itemStyle:{
+            	color:function(parame){
+            		return ["#05eefc",'#f76f6f','#dd956e','#6ff7a9','#937bc2','#d79ede','#36ace9','#c9a954'][parame.dataIndex]
+            	}
+            },
+            label: {
+            	show:false,
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            lableLine: {
+            	show:false,
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:[
+                {value:10, name:'宣传部'},
+                {value:5, name:'党办'},
+                {value:15, name:'国土局'},
+                {value:25, name:'规划局'},
+                {value:20, name:'督考办'},
+                {value:35, name:'环保局'},
+                {value:30, name:'工信局'},
+                {value:38, name:'其他'}
+             
+            ]
+        }
+    ]
+};
+myChart1.setOption(option1);
+
+
+// 单位排名
+var myChart2=echarts.init(document.getElementById("echarts2")); 
+var option2 = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '3%',
+        top:"3%",
+        bottom: '0',
+        containLabel: true
+    },
+    xAxis:  {
+        type: 'value',
+        show:false
+    },
+    yAxis: [{
+        type: 'category',
+        inverse:true,
+        data:  ['宣传部','党办','国土局','规划局','督考办','环保局','工信局','社会管理局','卫计局','劳动保障局'],
+        axisLabel:{
+        	color:"#fff"
+        }
+    },
+    {
+        type: 'category',
+        inverse:true,
+        axisLine:{
+          show:false  
+        },
+        data:  ['1052次','1050次','1004次','952次','981次','802次','502次','242次','201次','180次'],
+        axisLabel:{
+        	color:"#fff"
+        }
+    }
+    ],
+    series: [
+        {
+            name: '录入量',
+            type: 'bar',
+            stack: '总量',
+            barWidth:14,
+            color:"#45cef6",
+            itemStyle:{barBorderRadius:[7,7,7,7]},
+            label: {
+                normal: {
+                    show: false
+                }
+            },
+            data: [440,390, 334,330,320,302,301,210,155,100]
+        }
+    ]
+};
+myChart2.setOption(option2);
+
+
+// 用户访问量统计
+var myChart3=echarts.init(document.getElementById("echarts3")); 
+var option3 = {
+    tooltip : {
+    	show:false,
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    series: [
+        {
+        	title:{
+        		color:"#52ffff",
+        		offsetCenter:[0,'85%'],
+        		rich:{
+        			a:{fontWight:'bolder',color:'#2cbdd1',fontSize:16},
+        			b:{fontSize:22,color:"#31e2f2"}
+        		}
+        	},
+            name: '业务指标',
+            type: 'gauge',
+         	axisLine:{
+                lineStyle:{
+                    color:[[0, 'transparent'], [0.8, 'transparent'], [1, 'transparent']]
+                }
+            },
+            splitLine:{
+            	length:18,
+                lineStyle:{
+                    color:'#52ffff',
+                    width:4
+                }
+            },
+            axisTick:{
+                lineStyle:{
+                    color:'#52ffff'
+                }
+            },
+            itemStyle:{
+                color:"#52ffff"
+            },
+            axisLabel:{
+                show:true,
+                color:"#52ffff"
+            },
+            center:["75%","center"],
+            radius:"65%",
+            detail: {formatter:'{value}%'},
+            data: [{value: 50, name: `{b|20(次)}\n\n{a|系统管理平台访问量统计}`}]
+        },
+        {
+        	title:{
+        		color:"#52ffff",
+        		offsetCenter:[0,'85%'],
+        		rich:{
+        			a:{fontWight:'bolder',color:'#2cbdd1',fontSize:16},
+        			b:{fontSize:22,color:"#31e2f2"}
+        		}
+        	},
+            name: '业务指标',
+            type: 'gauge',
+            radius:"65%",
+            center:["25%","center"],
+            axisLine:{
+                lineStyle:{
+                    color:[[0, 'transparent'], [0.8, 'transparent'], [1, 'transparent']]
+                }
+            },
+            splitLine:{
+            	length:18,
+                lineStyle:{
+                    color:'#52ffff',
+                    width:4
+                }
+            },
+            axisTick:{
+                lineStyle:{
+                    color:'#52ffff'
+                }
+            },
+            itemStyle:{
+                color:"#52ffff"
+            },
+            axisLabel:{
+                show:true,
+                color:"#52ffff"
+            },
+            detail: {formatter:'{value}%'},
+            data: [{
+            	value: 50, 
+            	name: `{b|504(次)}\n\n{a|系统小程序访问量统计}`
+            	}
+            ],
+            
+
+        }
+    ]
+};
+myChart3.setOption(option3)
+
+
+
+// 栏目访问量排名
+var myChart4=echarts.init(document.getElementById("echarts4")); 
+var option4 = {
+	grid:{
+		x:35,
+		y:30,
+		x2:10,
+		y2:60
+	},
+	
+	tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    xAxis: {
+    	nameTextStyle:{color:"#fff"},
+        type: 'category',
+        axisLabel: {
+            show: true,
+            rotate:30,
+            textStyle: {
+                color: '#fff'
+            }
+       },
+        data:["样式库管理","文稿库管理","角色管理","任务约稿","文稿编辑","组织机构管理","文稿录入","用户管理","查询统计","日志管理","菜单管理"]
+    },
+    yAxis: {
+    	name:"点击数量",
+    	nameTextStyle:{color:"#fff"},
+        type: 'value',
+        axisLabel: {
+            show: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        splitLine: {
+        	show: true, 
+        	//  改变轴线颜色
+        	lineStyle: {
+            	// 使用深浅的间隔色
+            	color: ['#262C3E']
+        	}                            
+		}
+    },
+    series: [{
+    	name:"访问量",
+	    itemStyle:{
+			normal:{color:'#26A4E3',barBorderRadius:[12, 12, 12, 12]}
+	    },
+        data:[20,15,16,34,24,26,35,14,25,36,24],
+        type: 'bar',
+        barWidth:16
+    }]
+};
+myChart4.setOption(option4);
+
+
+
+// 用户使用情况分析
+var myChart5=echarts.init(document.getElementById("echarts5")); 
+var option5 = {
+		grid:{
+			x:60,
+			y:30,
+			x2:60,
+			y2:40
+		},
+		legend: {
+	        data:['支部活动','三会一课'],
+	        right:"3%",
+	        textStyle:{
+		        	color:"#fff",
+		        	fontSize:12
+		    }
+		},
+		tooltip: {
+	        trigger: 'axis'
+	    },
+	    xAxis: {
+	    	nameTextStyle:{color:"#fff"},
+	        type: 'category',
+	        data:['05:00','06:00','07:00','08:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00'],
+	        axisLabel: {        
+            	show: true,
+            	textStyle: {
+                	color: '#fff',
+                	fontSize:'12'
+            	}
+        	}
+	    },
+	    yAxis: {
+	    	name:"登陆次数",
+	    	nameTextStyle:{color:"#fff"},
+	        type: 'value',
+	        axisLabel: {        
+            	show: true,
+            	textStyle: {
+                	color: '#fff',
+                	fontSize:'12'
+            	}
+        	},
+            splitLine: {
+            	show: true, 
+            	//  改变轴线颜色
+            	lineStyle: {
+                	// 使用深浅的间隔色
+                	color: ['#262C3E']
+            	}                            
+        	}
+	    },
+       dataZoom: [
+	        {
+	            show: true,
+	            realtime: true,
+	            start: 0,
+	            end: 50,
+	            borderColor:"rgba(0,0,0,0)",
+	            handleStyle:{
+	            	color:"#45cef6"
+	            },
+	            textStyle:{
+	            	color:"#45cef6",
+	            	lineHeight:80
+	            }
+	        }
+	        
+	    ],
+	    series: [
+	    	{
+	    		name:"登陆次数",
+		        data:[20,15,18,13,12,16,25,24,18,16,20,10],
+		        type: 'line',
+		        lineStyle:{color:"#45cef6"},
+		        symbolSize: 8
+	    	}
+	    ]
+	};
+myChart5.setOption(option5);
+
+
+
+</script>
+</html>

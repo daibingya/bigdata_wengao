@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>中央厨房大数据</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/layui.css">
+	<link rel="stylesheet" href="./css/scrolledit.css">
+	<link rel="stylesheet" href="./css/publiccss.css">
+</head>
+<style>
+.topCont{
+	height:390px;
+}
+.botCont{
+	height:470px;
+}
+.topCont,.botCont{
+	width:1870px;
+	margin:20px auto;
+	font-size: 0;
+}
+.left,.right{
+	width:927px;
+	height:100%;
+	background-image:url(./image/border.png);
+	background-size:100% 100%;
+	background-color:rgba(22,25,68,.8);
+	display: inline-block;
+	vertical-align: top;
+	font-size:16px;
+}
+.right{
+	margin-left:15px;
+}
+.titeBox{
+	width:100%;
+	height:50px;
+	padding:15px 20px;
+	box-sizing:border-box;
+	color:#507cf1;
+}
+.titeBox img{
+	vertical-align: bottom;
+}
+.titeBox .title{
+	width:200px;
+	font-size:18px;
+	display: inline-block;
+	font-weight: bold;
+}
+.titeBox .select{
+	float: right;
+}
+.titeBox .select span{
+	width:70px;
+	height:30px;
+	font-size:12px;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+	border:1px solid #2a3b72;
+}
+.titeBox .select span:first-child{
+	border-right:0;
+}
+.titeBox .select span.actives{
+	color:#fff;
+	background-color:#669ffd;
+}
+.echartsPublic{
+	width:98%;
+	margin:auto;
+	height:calc(100% - 60px);
+	margin-top:5px;
+}
+</style>
+<body>
+	<header>
+		<ul>
+			<li><a href="./index.html">文稿大数据</a></li>
+			<li class="active"><a href="./centerKitchen.html">中央厨房大数据</a></li>
+			<li><a href="./platformUse.html">平台使用大数据</a></li>
+			<li><a href="./companyKitchen.html">单位厨房大数据</a></li>
+		</ul>
+		<div class="back"><img src="./image/header.png" alt=""></div>
+	</header>
+	<!-- 时间选择 -->
+	<div class="time">
+		<div class="layui-form">
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <input type="text" class="layui-input test-item" placeholder="请选择起始时间">
+		    </div>
+		    <span style="color:#6d6d6d">--</span>
+		    <div class="layui-inline">
+		      <input type="text" class="layui-input test-item" placeholder="请选择结束时间">
+		    </div>
+		    <button type="button" class="layui-btn layui-btn-normal">查询</button>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="topCont">
+		<div class="left">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>文稿录入量统计</span>
+				</div>
+				<div class="select">
+					<span>类型</span><span class="actives">单位</span>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts1"></div>
+		</div>
+		<div class="right">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>文稿使用量统计</span>
+				</div>
+				<div class="select">
+					<span>类型</span><span class="actives">单位</span>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts2"></div>
+		</div>
+	</div>
+
+	<div class="botCont">
+		<div class="left">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>文稿生成量统计</span>
+				</div>
+				<div class="select">
+					<span>类型</span><span class="actives">单位</span>
+				</div>
+			</div>
+			<div class="echartsPublic" id="echarts3"></div>
+		</div>
+		<div class="right">
+			<div class="titeBox">
+				<div class="title">
+					<img src="./image/data.png" alt="">
+					<span>文稿点击量排名</span>
+				</div>
+			</div>
+			<div class="echartsPublic">
+				<ul class="listNode scroll_box">
+					<li>
+						<span>01. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>02. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>03. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>04. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>05. 围绕中心，服务围绕中心，服务围绕中心，服务大局策划撒谎带饭</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>06. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>07. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>08. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>09. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+					<li>
+						<span>10. 围绕中心，服务大局</span>
+						<span>搜索次数：10051次</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="./js/echarts.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./layDate/laydate/laydate.js"></script>
+<script src="./js/layuiUse.js"></script>
+<script>
+// 文稿生成量统计
+var myChart1=echarts.init(document.getElementById("echarts1")); 
+var option1 = {
+	grid:{
+		x:60,
+		y:50,
+		x2:50,
+		y2:40
+	},
+	tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    xAxis: {
+    	name:"",
+    	nameTextStyle:{color:"#fff"},
+        type: 'category',
+        axisLabel: {
+            show: true,
+            rotate:30,
+            textStyle: {
+                color: '#fff',
+                fontSize:12
+            }
+        },
+        data: ['会议报告','讲话','演讲','发言','汇报','谈话','主持词','致辞','工作汇报','调研报告','信函']
+    },
+    yAxis: {
+    	name:"数量",
+    	nameTextStyle:{color:"#fff"},
+        type: 'value',
+        axisLabel: {
+            show: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        splitLine: {
+        	show: true, 
+        	//  改变轴线颜色
+        	lineStyle: {
+            	// 使用深浅的间隔色
+            	color: ['#262C3E']
+        	}                            
+		}
+    },
+    series: [{
+	    	name:"录入数量",
+		    itemStyle:{
+				normal:{color:"#28bcc8"}
+		    },
+	        data: [20,80,50,66,70,20,50,40,45,55,10],
+	        type: 'bar',
+	        barWidth:29,
+
+	    }
+    ]
+};
+myChart1.setOption(option1);
+
+
+
+// 文稿使用量统计
+var myChart2=echarts.init(document.getElementById("echarts2")); 
+var option2 = {
+	grid:{
+		x:60,
+		y:50,
+		x2:50,
+		y2:40
+	},
+	tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    xAxis: {
+    	name:"",
+    	nameTextStyle:{color:"#fff"},
+        type: 'category',
+        axisLabel: {
+            show: true,
+            rotate:30,
+            textStyle: {
+                color: '#fff',
+                fontSize:12
+            }
+        },
+        data: ['会议报告','讲话','演讲','发言','汇报','谈话','主持词','致辞','工作汇报','调研报告','信函']
+    },
+    yAxis: {
+    	name:"数量",
+    	nameTextStyle:{color:"#fff"},
+        type: 'value',
+        axisLabel: {
+            show: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        splitLine: {
+        	show: true, 
+        	//  改变轴线颜色
+        	lineStyle: {
+            	// 使用深浅的间隔色
+            	color: ['#262C3E']
+        	}                            
+		}
+    },
+    series: [{
+	    	name:"使用数量",
+		    itemStyle:{
+				normal:{color:"#28bcc8"}
+		    },
+	        data: [20,80,50,66,70,20,50,40,45,55,10],
+	        type: 'bar',
+	        barWidth:29,
+
+	    }
+    ]
+};
+myChart2.setOption(option2);
+
+
+
+// 文稿生成量统计
+var myChart3=echarts.init(document.getElementById("echarts3")); 
+var option3 = {
+	grid:{
+		x:60,
+		y:50,
+		x2:50,
+		y2:40
+	},
+	tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    xAxis: {
+    	name:"",
+    	nameTextStyle:{color:"#fff"},
+        type: 'category',
+        axisLabel: {
+            show: true,
+            rotate:30,
+            textStyle: {
+                color: '#fff',
+                fontSize:12
+            }
+        },
+        data:['会议报告','讲话','演讲','发言','汇报','谈话','主持词','致辞','工作汇报','调研报告','信函']
+    },
+    yAxis: {
+    	name:"数量",
+    	nameTextStyle:{color:"#fff"},
+        type: 'value',
+        axisLabel: {
+            show: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        splitLine: {
+        	show: true, 
+        	//  改变轴线颜色
+        	lineStyle: {
+            	// 使用深浅的间隔色
+            	color: ['#262C3E']
+        	}                            
+		}
+    },
+    series: [{
+	    	name:"生成数量",
+		    itemStyle:{
+				normal:{color:"#28bcc8"}
+		    },
+	        data: [20,80,50,66,70,20,50,40,45,55,10],
+	        type: 'bar',
+	        barWidth:29,
+
+	    }
+    ]
+};
+myChart3.setOption(option3);
+
+</script>
+</html>

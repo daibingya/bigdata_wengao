@@ -1,0 +1,69 @@
+.scroll_box::-webkit-scrollbar {
+    /*高宽分别对应横竖滚动条的尺寸*/
+    width: 6px;
+    height: 10px;
+}
+.scroll_box::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #2e3056;
+}
+.scroll_box::-webkit-scrollbar-track {
+/*滚动条里面轨道*/
+-webkit-box-shadow: inset 0 0 5px rgba(255, 255,255, 0.2);
+border-radius:5px;
+background: rgba(197, 197, 197,0);
+}
+/* .scroll_box::-webkit-scrollbar-thumb:hover{
+    background: skyblue;
+} */
+
+
+
+#edui1_iframeholder::-webkit-scrollbar {
+    /*高宽分别对应横竖滚动条的尺寸*/
+    width: 6px;
+    height: 10px;
+}
+#edui1_iframeholder::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(87, 184, 201,0.8);
+}
+#edui1_iframeholder::-webkit-scrollbar-track {
+/*滚动条里面轨道*/
+-webkit-box-shadow: inset 0 0 5px rgba(255, 255,255, 0.2);
+border-radius:5px;
+background: rgb(197, 197, 197);
+}
+
+.listNode{
+    height:100%;
+    width:100%;
+    overflow-y: auto;
+}
+.listNode li{
+    border:1px solid #4a4a4a;
+    padding:8px 10px;
+    color:gray;
+    width:96%;
+    margin:0 auto 10px;
+    box-sizing: border-box;
+}
+.listNode li span:first-child{
+    display: inline-block;
+    vertical-align: top;
+    width:75%;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.listNode li span:last-child{
+    color:#52ffff;
+    float: right;
+    vertical-align:top;
+    font-size:14px;
+}
